@@ -13,7 +13,7 @@ import me.codetalk.demo.springboot.kafka.Message;
 import me.codetalk.demo.springboot.kafka.MessageProducer;
 import me.codetalk.demo.util.JsonUtils;
 
-@Component
+//@Component
 public class DemoRunner implements CommandLineRunner {
 
 	@Autowired

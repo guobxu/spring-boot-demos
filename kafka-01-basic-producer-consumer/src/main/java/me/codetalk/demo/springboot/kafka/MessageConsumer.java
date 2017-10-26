@@ -14,15 +14,20 @@ public class MessageConsumer implements ConsumerSeekAware {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MessageConsumer.class);
 
-	@KafkaListener(topics = "testrep3", groupId = "testrep3-group")
+//	@KafkaListener(topics = "testrep3", groupId = "testrep3-group")
 //	@KafkaListener(topics = "topicx", groupId = "topicx-group")
+//	@KafkaListener(topics = "topicx", groupId = "topicx-group", topicPartitions = {
+//			@org.springframework.kafka.annotation.TopicPartition(topic = "topicx", partitions={"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"})
+//	})
+//	@KafkaListener(topics = "topicx", groupId = "topicx-group", containerFactory = "topicxContainerFactory")
+	@KafkaListener(topics = "topicx", groupId = "topicx-group")
 	public void receive(String mesg) {
 		LOGGER.info("received data='{}'", mesg);
 	}
 
 	@Override
 	public void registerSeekCallback(ConsumerSeekCallback callback) {
-		
+
 	}
 
 	@Override

@@ -13,11 +13,8 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@JsonProperty("customer_id")
 	private String customerId;
-	@JsonProperty("first_name")
 	private String firstName;
-	@JsonProperty("last_name")
 	private String lastName;
 	
 	public Customer() {}
@@ -46,7 +43,7 @@ public class Customer implements Serializable {
 	
 	@Override
 	public String toString() {
-		return String.format("Customer[id=%s, firstName='%s', lastName='%s']", this.customerId,
+		return String.format("Customer[customerId=%s, firstName='%s', lastName='%s']", this.customerId,
 				this.firstName, this.lastName);
 	}
 

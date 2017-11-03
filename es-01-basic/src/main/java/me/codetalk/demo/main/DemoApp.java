@@ -50,6 +50,9 @@ public class DemoApp implements CommandLineRunner {
 		LOGGER.info("====================> Customer found with findByFirstName('Alice')");
 		LOGGER.info("====================> " + this.customerRepository.findByFirstName("Alice"));
 		
+		LOGGER.info("====================> Customer found with findByFirstNameAndLastName('Alice', 'Smith')");
+		LOGGER.info("====================> " + this.customerRepository.findByFirstNameAndLastName("Alice", "Smith"));
+		
 		LOGGER.info("====================> Customers found with findByLastName('Smith')");
 		for (Customer customer : this.customerRepository.findByLastName("Smith")) {
 			System.out.println(customer);

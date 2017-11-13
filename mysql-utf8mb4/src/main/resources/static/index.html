@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MySQL emoji testing</title>
+<script type="text/javascript" src="jquery/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+	<div class='wrapper-new'>
+		<input type="text" class="input-mesg">
+		<button type="button" value="Submit">Submit</button>
+	</div>
+	<div class='wrapper-mesgs'>
+		<table>
+			<thead><tr><td>Row</td><td>Text</td></thead>
+			<tbody></tbody>
+		</table>
+	</div>
+</body>
+<script type="text/javascript">
+	$("div.wrapper-new button").click(function() {
+		var val = $.trim($(".input-mesg").val());
+		if(!val) return;
+		
+		var payload = {
+				"mesg_text": val
+		};
+		$.ajax({
+			url: '/mesg/add',
+			data: JSON.stringify(payload),
+			contentType: 'application/json',
+			method: 'POST',
+			dataType: 'json',
+			success: function(rt) {
+				var rowsEl = $("div.wrapper-mesgs tbody");
+				
+				var rowshtml = '';
+				$.each(rt, function(i, m) {
+					rowshtml += '<tr><td>' + m.id + '</td><td>' + m.text + '</td></tr>';
+				});
+				
+				rowsEl.html(rowshtml);
+			},
+			error: function() {
+				console.log("error insert message");
+			}
+		});
+	})
+</script>
+</html>

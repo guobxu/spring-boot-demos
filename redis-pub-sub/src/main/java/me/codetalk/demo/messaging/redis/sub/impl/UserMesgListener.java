@@ -21,7 +21,7 @@ public class UserMesgListener extends AbstractMessageListener {
 	private ICacheService cacheService;
 	
 	public void onMessage(Message message, byte[] pattern) {
-		MesgObj msgobj = (MesgObj)mesgToObj(message);
+		MesgObj msgobj = mesgToObj(message);
 		
 		String cacheKey = this.getClass().getName() + "-" + msgobj.getId();
 		if(!cacheService.setNX(cacheKey, "X")) return;

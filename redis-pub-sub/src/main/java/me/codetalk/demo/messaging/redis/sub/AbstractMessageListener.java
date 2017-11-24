@@ -6,15 +6,17 @@ import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
+import me.codetalk.demo.messaging.MesgObj;
+
 public abstract class AbstractMessageListener implements MessageListener {
 
 	@Autowired 
 	private RedisTemplate<String, String> redisTemplate;
 	
-    protected Object mesgToObj(Message mesg) {
+    protected MesgObj mesgToObj(Message mesg) {
     	Jackson2JsonRedisSerializer serializer = (Jackson2JsonRedisSerializer)redisTemplate.getValueSerializer();
     	
-    	return serializer.deserialize(mesg.getBody());
+    	return (MesgObj)serializer.deserialize(mesg.getBody());
     }
 	
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
+import me.codetalk.demo.messaging.MesgObj;
 import me.codetalk.demo.messaging.redis.pub.IMessagePublisher;
 
 @Component
@@ -16,10 +17,10 @@ public class MessagePublisherImpl implements IMessagePublisher {
 	@Autowired
 	private RedisTemplate<String, String> redisTemplate;
 	
-	public void sendMessage(String chn, Object obj) {
-		LOGGER.info("Send data: " + obj.toString());
+	public void sendMessage(String chn, MesgObj msgobj) {
+		LOGGER.info("Send data: " + msgobj.toString());
 		
-		redisTemplate.convertAndSend(chn, obj);
+		redisTemplate.convertAndSend(chn, msgobj);
 	}
 	
 }

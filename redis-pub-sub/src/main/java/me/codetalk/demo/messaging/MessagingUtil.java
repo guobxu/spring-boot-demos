@@ -1,19 +1,15 @@
 package me.codetalk.demo.messaging;
 
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import me.codetalk.util.JsonUtils;
 
 public final class MessagingUtil {
 
-	private static ObjectMapper MAPPER = new ObjectMapper();
-	
 	public static MesgObj convertAsMesgObj(String mesgType, Object obj) {
-		Map<String, Object> data = toMap(obj);
+		Map<String, Object> data = JsonUtils.toMap(obj);
 		
 		return convertAsMesgObj(mesgType, data);
 	}
@@ -35,11 +31,5 @@ public final class MessagingUtil {
 		
 		return mo;
 	}
-	
-	public static Map<String, Object> toMap(Object obj) {
-		Map<String, Object> map = MAPPER.convertValue(obj, new TypeReference<Map<String, Object>>() {});
-		
-		return map;
-	}	
 	
 }

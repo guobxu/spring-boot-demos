@@ -25,8 +25,8 @@ import me.codetalk.demo.pojo.User;
 		"me.codetalk.cache.config",
 		"me.codetalk.cache.service.impl",
         "me.codetalk.demo.messaging.redis.config",
-        "me.codetalk.demo.messaging.redis.pub",
-        "me.codetalk.demo.messaging.redis.sub",
+        "me.codetalk.demo.messaging.redis.pub.impl",
+        "me.codetalk.demo.messaging.redis.sub.impl",
 })
 public class DemoApp {
 

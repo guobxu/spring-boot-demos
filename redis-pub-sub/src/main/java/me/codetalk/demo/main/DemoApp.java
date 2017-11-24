@@ -23,6 +23,7 @@ import me.codetalk.demo.pojo.User;
 @EnableScheduling
 @ComponentScan(basePackages = {
 		"me.codetalk.cache.config",
+		"me.codetalk.cache.service.impl",
         "me.codetalk.demo.messaging.redis.config",
         "me.codetalk.demo.messaging.redis.pub",
         "me.codetalk.demo.messaging.redis.sub",

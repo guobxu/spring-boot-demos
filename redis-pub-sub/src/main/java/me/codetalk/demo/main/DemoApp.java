@@ -13,16 +13,19 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import me.codetalk.demo.Constants;
+import me.codetalk.demo.messaging.MesgObj;
+import me.codetalk.demo.messaging.MessagingUtil;
+import me.codetalk.demo.messaging.redis.pub.IMessagePublisher;
 import me.codetalk.demo.pojo.Order;
 import me.codetalk.demo.pojo.User;
-import me.codetalk.demo.redis.pub.IMessagePublisher;
 
 @SpringBootApplication
 @EnableScheduling
 @ComponentScan(basePackages = {
-        "me.codetalk.demo.redis.pub",
-        "me.codetalk.demo.redis.sub",
-        "me.codetalk.cache.config",
+		"me.codetalk.cache.config",
+        "me.codetalk.demo.messaging.redis.config",
+        "me.codetalk.demo.messaging.redis.pub",
+        "me.codetalk.demo.messaging.redis.sub",
 })
 public class DemoApp {
 
@@ -44,7 +47,9 @@ public class DemoApp {
 		user.setName("User " + rand.nextInt(2000));
 		user.setBirth(System.currentTimeMillis());
 		
-		mesgPublisher.sendMessage(Constants.CHN_USER, user);
+		MesgObj msgobj = MessagingUtil.convertAsMesgObj(Constants.MSGTYPE_USER_CREATE, user);
+		
+		mesgPublisher.sendMessage(Constants.CHN_USER_CREATE, msgobj);
 	}
 	
 	@Scheduled(initialDelay = 5* 1000, fixedDelay = 3 * 1000)
@@ -54,7 +59,9 @@ public class DemoApp {
 		order.setNo("Order-No-" + rand.nextInt(99999));
 		order.setCreateDate(System.currentTimeMillis());
 		
-		mesgPublisher.sendMessage(Constants.CHN_ORDER, order);
+		MesgObj msgobj = MessagingUtil.convertAsMesgObj(Constants.MSGTYPE_ORDER_CREATE, order);
+		
+		mesgPublisher.sendMessage(Constants.CHN_ORDER_CREATE, msgobj);
 	}
 
 }

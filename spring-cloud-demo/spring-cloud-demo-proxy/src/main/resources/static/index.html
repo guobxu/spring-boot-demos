@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<htmL>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=1150, user-scalable=no">
+    <title>Home Page</title>
+</head>
+<body>
+    <div class='container'>
+    	<div class='wrapper-user'>
+		</div>
+		<button type="button" value="Submit">Submit</button>
+	</div>
+</body>
+<script src="js/lib/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+	$("div.container button").click(function() {
+		$.ajax({
+			url: '/auth/user/admin',
+			contentType: 'application/json',
+			method: 'GET',
+			dataType: 'json',
+			success: function(rt) {
+				console.log(rt);
+				var userWrapper = $("div.wrapper-user");
+				
+				userWrapper.html(JSON.stringify(rt));
+			},
+			error: function() {
+				console.log("error insert message");
+			}
+		});
+	})
+</script>
+</html>

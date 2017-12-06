@@ -19,11 +19,11 @@ import me.codetalk.cache.service.ICacheService;
 public class CacheServiceImpl implements ICacheService {
 
     @Resource(name = "appRedisTemplate")  
-    private RedisTemplate<String, String> appRedisTemplate;  
+    private RedisTemplate<String, String> redisTemplate;  
 
     @Override
     public boolean set(byte[] key, byte[] value, long activeTime) {
-        return appRedisTemplate.execute(new RedisCallback<Boolean>() {
+        return redisTemplate.execute(new RedisCallback<Boolean>() {
             public Boolean doInRedis(RedisConnection connection)
                     throws DataAccessException {
                 boolean rs = true;
@@ -38,7 +38,7 @@ public class CacheServiceImpl implements ICacheService {
 
     @Override
     public boolean set(String key, Object obj, long activeTime) {
-        Jackson2JsonRedisSerializer serializer = (Jackson2JsonRedisSerializer)appRedisTemplate.getValueSerializer();
+        Jackson2JsonRedisSerializer serializer = (Jackson2JsonRedisSerializer)redisTemplate.getValueSerializer();
         byte[] valBytes = serializer.serialize(obj);
 
         return set(key.getBytes(), valBytes, activeTime);

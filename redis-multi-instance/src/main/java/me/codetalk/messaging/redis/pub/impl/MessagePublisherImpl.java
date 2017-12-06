@@ -16,12 +16,12 @@ public class MessagePublisherImpl implements IMessagePublisher {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MessagePublisherImpl.class);
 	
 	@Resource(name = "mesgRedisTemplate")
-	private RedisTemplate<String, String> mesgRedisTemplate;
+	private RedisTemplate<String, String> redisTemplate;
 	
 	public void sendMessage(String chn, MesgObj msgobj) {
 		LOGGER.info("Send data: " + msgobj.toString());
 		
-		mesgRedisTemplate.convertAndSend(chn, msgobj);
+		redisTemplate.convertAndSend(chn, msgobj);
 	}
 	
 }

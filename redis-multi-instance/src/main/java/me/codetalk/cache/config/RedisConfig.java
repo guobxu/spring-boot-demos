@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
@@ -20,7 +19,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import redis.clients.jedis.JedisPoolConfig;
 
 @Configuration
-@PropertySource("classpath:redis.properties")
 public class RedisConfig {
 
 	/************************** Redis - App  **************************/

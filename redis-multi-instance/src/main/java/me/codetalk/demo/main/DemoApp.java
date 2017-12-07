@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
@@ -23,6 +24,7 @@ import me.codetalk.messaging.redis.pub.IMessagePublisher;
 		"me.codetalk.cache.service.impl",
 		"me.codetalk.messaging.redis.pub.impl",
 })
+@PropertySource("classpath:redis.properties")
 public class DemoApp {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(DemoApp.class);

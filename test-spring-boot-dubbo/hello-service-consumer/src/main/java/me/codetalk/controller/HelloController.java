@@ -13,12 +13,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    @Reference(timeout = 5000)
+    @Reference(timeout = 5000, group = "v1")
     private HelloService helloService;
+
+    @Reference(timeout = 5000, group = "v2")
+    private HelloService helloServiceV2;
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello(@RequestParam("name") String name) {
         return helloService.sayHello(name);
+    }
+
+    @RequestMapping(value = "/v2/hello", method = RequestMethod.GET)
+    public String helloV2(@RequestParam("name") String name) {
+        return helloServiceV2.sayHello(name);
     }
 
 }

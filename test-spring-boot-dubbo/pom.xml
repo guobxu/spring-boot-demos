@@ -11,6 +11,7 @@
         <module>hello-service-provider</module>
         <module>hello-service-consumer</module>
         <module>test-common</module>
+        <module>hello-service-provider-v2</module>
     </modules>
 
     <packaging>pom</packaging>

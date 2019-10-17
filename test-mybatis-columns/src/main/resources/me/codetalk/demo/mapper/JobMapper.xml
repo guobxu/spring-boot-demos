@@ -1,0 +1,61 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.codetalk.demo.mapper.JobMapper">
+
+	<resultMap type="me.codetalk.demo.entity.Job" id="jobResultMap">
+		<result property="id" column="job_id"></result>
+		<result property="userId" column="user_id"></result>
+		<result property="title" column="job_title"></result>
+		<result property="detail" column="job_detail"></result>
+		<result property="status" column="job_status"></result>
+		<result property="categoryId" column="category_id"></result>
+		<result property="duration" column="job_duration"></result>
+		<result property="budget" column="job_budget"></result>
+		<result property="fulltime" column="job_fulltime"></result>
+		<result property="deadline" column="job_deadline"></result>
+		<result property="contractor" column="job_contractor"></result>
+		<result property="startDate" column="start_date"></result>
+		<result property="deliveryDate" column="delivery_date"></result>
+		<result property="actualOffer" column="actual_offer"></result>
+		<result property="contractorRating" column="contractor_rating"></result>
+		<result property="employerRating" column="employer_rating"></result>
+		<result property="deleteMark" column="delete_mark"></result>
+		<result property="deleteReason" column="delete_reason"></result>
+		<result property="deleteBy" column="delete_by"></result>
+
+		<result property="createDate" column="create_date"></result>
+		<result property="lastUpdate" column="last_update"></result>
+	</resultMap>
+
+	<sql id="Job_Column_List">
+		job_id,user_id,job_title,job_detail,job_status,category_id,job_duration,job_budget, job_fulltime,job_deadline,
+		job_contractor,start_date,delivery_date,actual_offer,contractor_rating, employer_rating,
+		delete_mark,delete_reason,delete_by,create_date,last_update
+	</sql>
+
+	<select id="selectJob" parameterType="map" resultMap="jobResultMap">
+		select
+		<choose>
+			<when test="columns == null || columns.size() == 0">
+				<include refid="Job_Column_List" />
+			</when>
+			<otherwise>
+				<foreach collection ="columns" item="col" index= "index" separator =",">${col}</foreach>
+			</otherwise>
+		</choose>
+		  from jobs where job_id = #{jobId}
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+

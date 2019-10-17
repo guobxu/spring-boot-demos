@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sf.demo.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.sf.demo.entity.User">
+        <id column="emp_code" property="empCode" jdbcType="VARCHAR" />
+        <result column="emp_name" property="empName" jdbcType="VARCHAR" />
+        <result column="hq_code" property="hqCode" jdbcType="VARCHAR" />
+        <result column="area_code" property="areaCode" jdbcType="VARCHAR" />
+        <result column="division_code" property="divisionCode" jdbcType="VARCHAR" />
+        <result column="dept_code" property="deptCode" jdbcType="VARCHAR" />
+        <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
+        <result column="dept_level" property="deptLevel" jdbcType="VARCHAR" />
+        <result column="mail_address" property="mail" jdbcType="VARCHAR" />
+        <result column="org_name" property="orgName" jdbcType="VARCHAR" />
+        <result column="position_name" property="positionName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        emp_code, emp_name, hq_code, area_code, division_code, dept_code, dept_name, dept_level,
+        mail_address,org_name,position_name
+    </sql>
+    
+    <select id="selectUserById" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" />
+          from bdp_cdbi_user
+         where emp_code=#{userId} limit 1
+    </select>
+
+</mapper>

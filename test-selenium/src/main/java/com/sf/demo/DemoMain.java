@@ -3,6 +3,11 @@ package com.sf.demo;
 /**
  * Creator: 01380994
  * Date: 2020/2/10
+ *
+ * 1. 安装chrome, 版本80.0.3987.87
+ * 2. 安装chromedriver, 解压chromedriver_linux64.zip到目录/app/selenium/
+ * 3. 安装中文字体
+ *
  */
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -63,7 +68,7 @@ public class DemoMain implements CommandLineRunner {
 //                ".sf-express.com", "/", null);
 //        driver.manage().addCookie(cookie);
 
-        driver.get("http://cdbi.sit.sf-express.com/v2/#/external-snapshot/035799a72bc9462c88d0a50d9e1e9096?dashboardIndex=0&appId=BDP_CDBI&token=M0E3M0VEQUVDRjU1Q0EzRUQzOTQ0N0MxRDIyRTMwMUVGNTdGQ0MxQUNGRTYwMDkyOEQ1RjdGMjVFMDczNUM2Mg==&extId=01380994&purge=1");
+        driver.get("http://cdbi.sf-express.com/v2/#/external-snapshot/c35d9749006949e2a5ec7a486c9a01cc?dashboardIndex=0&appId=BDP_CDBI&token=MUMxMjU4REMxNDdFNzRBQUFGMzEzOTRFRThFNERFMERCNjU4QTk1QjIwNzBBNUVENDc4QjIzOTk1MDQ2MjQ5Mw==&extId=01380994&purge=1");
 
         if(!waitForElementPresentById(driver, "dashboardRenderedFlag", 300)) {
             LOGGER.warn("报表未能渲染");

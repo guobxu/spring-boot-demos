@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>test-shade-finalname</artifactId>
+        <groupId>me.codetalk.demo</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>test-provider</artifactId>
+
+    <properties>
+        <sfpubJarName>sfpub-provider</sfpubJarName>
+        <sfpubJarVersion>1.0</sfpubJarVersion>
+        <MAIN_CLASS>me.codetalk.demo.DemoProviderMain</MAIN_CLASS>
+    </properties>
+
+    <!--<profiles>-->
+        <!--<profile>-->
+            <!--<id>dev</id>-->
+            <!--<activation>-->
+                <!--<activeByDefault>true</activeByDefault>-->
+            <!--</activation>-->
+            <!--<properties>-->
+                <!--<package.env>base/dev</package.env>-->
+                <!--<jarName>${artifactId}</jarName>-->
+                <!--<jarVersion>${version}</jarVersion>-->
+            <!--</properties>-->
+        <!--</profile>-->
+        <!--<profile>-->
+            <!--<id>sfpubdev</id>-->
+            <!--<properties>-->
+                <!--<package.env>sfpub/dev</package.env>-->
+                <!--<jarName>${sfpubJarName}</jarName>-->
+                <!--<jarVersion>${sfpubJarVersion}</jarVersion>-->
+            <!--</properties>-->
+        <!--</profile>-->
+    <!--</profiles>-->
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>${jarName}-${jarVersion}</finalName>
+    </build>
+
+</project>

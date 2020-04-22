@@ -1,6 +1,6 @@
 package com.sf.demo.controller;
 
-import com.sf.demo.service.HelloService;
+import com.sf.demo.service.HelloByeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +21,18 @@ public class DemoController {
     private static final Logger LOGGER = LoggerFactory.getLogger(DemoController.class);
 
     @Autowired
-    private HelloService helloService;
+    private HelloByeService helloByeService;
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String sayHello(@RequestParam(value = "name") String name, HttpServletRequest request) {
-        String s = helloService.sayHello(name);
+        String s = helloByeService.sayHello(name);
+
+        return s;
+    }
+
+    @RequestMapping(value = "/bye", method = RequestMethod.GET)
+    public String sayGoodbye(@RequestParam(value = "name") String name, HttpServletRequest request) {
+        String s = helloByeService.sayGoodbye(name);
 
         return s;
     }

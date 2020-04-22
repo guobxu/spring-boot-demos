@@ -12,6 +12,7 @@
         <module>client</module>
         <module>server</module>
         <module>rpc-api</module>
+        <module>server2</module>
     </modules>
 
     <parent>

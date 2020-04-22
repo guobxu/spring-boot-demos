@@ -8,6 +8,6 @@
     <dubbo:application name="ct-client-demo"  />
     <dubbo:registry id="demoReg" protocol="zookeeper" address="${demo.dubbo.registry.address}" group="${demo.dubbo.registry.group}"/>
 
-    <dubbo:reference id="helloService" interface="com.sf.demo.service.HelloService" retries="0" timeout="50000" check="false" registry="demoReg"/>
+    <dubbo:reference id="helloByeService" interface="com.sf.demo.service.HelloByeService" retries="0" timeout="50000" check="false" registry="demoReg"/>
 
 </beans>

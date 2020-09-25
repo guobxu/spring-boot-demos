@@ -1,0 +1,1 @@
+SELECT cast("label_date" AS varchar) as yks1, count(distinct "sku") as yks2, SUM( "suggest_label_bottle" ) as yks3, SUM( "suggest_label_box" ) as yks4, SUM( "suggest_label_pallet" ) as yks5 FROM ( select * from dm_inventory_dsc.wj_prc_production_label_plan where inc_day=20200918 ) v GROUP BY cast("label_date" AS varchar)
